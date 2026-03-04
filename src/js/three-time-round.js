@@ -1,5 +1,4 @@
 import * as THREE from 'three'; // 引入ThreeJS
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'; // 导入轨道控制器
 import fragmentShader from '../shaders/fragment.glsl'; // 导入片段着色器
 import vertex from '../shaders/vertex.glsl'; // 导入顶点着色器
 
@@ -24,13 +23,6 @@ export default class Three {
         )
         this.camera.position.set(0, 0, 1); // 设置相机位置
         this.scene.add(this.camera); // 将相机添加到场景中
-
-        // 创建轨道控制器
-        this.controls = new OrbitControls(this.camera, this.canvas); // 创建轨道控制器
-        this.controls.enableDamping = true; // 启用阻尼效果，使旋转更平滑
-        this.controls.dampingFactor = 0.05; // 阻尼系数
-        this.controls.enableZoom = true; // 启用缩放
-        this.controls.enablePan = true; // 启用平移
 
         this.renderer = new THREE.WebGLRenderer({ // 创建WebGL渲染器
             canvas: this.canvas, // 绑定到传入的canvas
@@ -74,12 +66,11 @@ export default class Three {
 
     // 渲染场景
     render() {
-        // const elapsedTime = this.clock.getElapsedTime(); // 获取已用时间
+        const elapsedTime = this.clock.getElapsedTime(); // 获取已用时间
 
-        // this.planeMesh.rotation.x = 0.3 * elapsedTime; // X轴旋转
-        // this.planeMesh.rotation.y = 0.6 * elapsedTime; // Y轴旋转
+        this.planeMesh.rotation.x = 0.3 * elapsedTime; // X轴旋转
+        this.planeMesh.rotation.y = 0.6 * elapsedTime; // Y轴旋转
 
-        this.controls.update(); // 更新轨道控制器
         this.renderer.render(this.scene, this.camera); // 渲染场景
         requestAnimationFrame(this.render.bind(this)); // 递归调用 render 方法
     }
