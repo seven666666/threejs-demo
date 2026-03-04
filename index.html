@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>threejs-demo</title>
+</head>
+
+<body>
+  <noscript class="text-center text-lg text-red-500">
+    Enable JavaScript to enjoy all the features of this app.
+  </noscript>
+  <main id="main" class="flex h-screen flex-col items-center justify-center bg-primary text-color">
+    <!-- 蒙版 -->
+    <div class="absolute z-[1] cursor-default rounded-xl bg-gray-800 bg-opacity-50">
+      <h1 id="title" class="select-none p-4 text-center text-2xl sm:text-3xl md:text-4xl"></h1>
+    </div>
+    <!-- 3d部分 -->
+    <canvas id="canvas" class="z-[0] h-full w-full"></canvas>
+  </main>
+  <script type="module" src="src/js/index.js"></script>
+</body>
+
+</html>
